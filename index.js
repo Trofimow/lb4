@@ -4,7 +4,7 @@
 /*--------------------------------------------------------часть 1----------------------------------------------*/
 
 
-function getText() {
+  function getText() {
     let text = document.getElementById('text').value;
     let textcolor = document.getElementById('color').value;
     let newLine = document.createElement('div');
@@ -202,6 +202,7 @@ function getText() {
     newRectangle.setAttribute('class', 'draggable')
   }
   
+
   document.onmousedown = function(e) { //нажали на мышь
     let elem = e.target; //элемент, на который нажали
     if (elem.className && elem.className.indexOf('draggable') >= 0) { //фильтрует эелементы (только с классом draggable)
@@ -237,3 +238,65 @@ function getText() {
     var b = document.body; //по всему документу
     b.style.webkitUserSelect = b.style.mozUserSelect = b.style.msUserSelect = 'none'; //добавляем свойство CSS - запретить выделение
   }
+
+
+
+
+  part4.onmousemove = function() { 
+    x1= event.clientX; 
+    y1= event.clientY;
+    x2=x1-90;
+    y2=y1-260; 
+}
+document.onclick=function()
+{
+  if(x1>10&&y1>154&&x1<795&&y1<700)
+  {
+   let newRectangle = document.createElement('div');
+   newRectangle.innerHTML;
+   let task3 = document.getElementById('task4');
+   task3.appendChild(newRectangle);
+    let mbr;
+   let r = Math.floor(Math.random() * (223));
+   let g = Math.floor(Math.random() * (256));
+   let b = Math.floor(Math.random() * (256));
+   let color = '#' + r.toString(16) + g.toString(16) + b.toString(16);
+   if(x1<170||x1>640||y1<250||y1>600){
+     mbr=50;
+   }else if((x1>=170&&x1<300)||(x1<=640&&x1>540)||(y1>=250&&y1<300)||(y1<=600&&y1>550)){
+    mbr=100;
+   }else{
+    mbr=150;
+   }
+   let leftPX =  x2-(mbr/2) + 'px';
+   let topPX =  y2 -(mbr/2)+ 'px';
+   let wbr=mbr+'px';
+   let qwe=mbr/2+'px';
+
+   Element.prototype.setAttributes = function(attrs) {
+     for (var idx in attrs) {
+       if ((idx === 'styles' || idx === 'style') && typeof attrs[idx] === 'object') {
+         for (var prop in attrs[idx]) {
+           this.style[prop] = attrs[idx][prop];
+         }
+       } else {
+         this.setAttribute(idx, attrs[idx]);
+       }
+     }
+   };
+ 
+   newRectangle.setAttributes({
+     'styles': {
+       'width': wbr,
+       'height': wbr,
+       'left': leftPX,
+       'top': topPX,
+       '-moz-border-radius': qwe,
+       '-webkit-border-radius': qwe,
+       'background':color,
+       'border-radius':qwe,
+     },
+   });
+   newRectangle.setAttribute('class', 'draggable')
+  }
+}
